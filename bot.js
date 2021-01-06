@@ -7,7 +7,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.content === 'ricardo') {
+    if (message.content.toLowerCase().includes('ricardo')) {
         message.channel.send('<:pinto:795825395563364362>');
     }
 });
