@@ -1,3 +1,4 @@
+const cron = require("cron");
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
@@ -11,4 +12,13 @@ client.on('message', message => {
     }
 });
 
+const scheduledMessage = new cron.CronJob('* 00,30 * * * *', () => {
+    // This runs every 30 minutes
+    client.channels.get(process.env.CHANNEL_ID).send('<:pinto:795825395563364362>');
+});
+
 client.login(process.env.BOT_TOKEN);
+
+if(process.env.CHANNEL_ID) {
+    scheduledMessage.start();
+}
