@@ -12,7 +12,7 @@ client.on('message', message => {
     }
 });
 
-const scheduledMessage = new cron.CronJob('* 00,30 * * * *', () => {
+const scheduledMessage = new cron.CronJob('00 00,30 * * * *', () => {
     // This runs every 30 minutes
     client.channels.get(process.env.CHANNEL_ID).send('<:pinto:795825395563364362>');
 });
