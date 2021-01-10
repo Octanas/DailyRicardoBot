@@ -17,11 +17,11 @@ client.on('message', message => {
             const specialMsg = Math.random();
 
             // 15% of probability of being sent
-            if (specialMsg >= 0.85) { 
-                message.channel.send('HEEERE\'S **RICARDO**!', {files: ['lib/heres_ricardo.jpg']});
+            if (specialMsg >= 0.85) {
+                message.channel.send('HEEERE\'S **RICARDO**!', { files: ['lib/heres_ricardo.jpg'] });
                 return;
             }
-            
+
             // 30% of probability of being sent
             if (specialMsg >= 0.7) {
                 message.channel.send('I\'m sorry, Ricardo is in another castle...');
@@ -30,7 +30,7 @@ client.on('message', message => {
                 setTimeout(function () {
                     message.channel.send('JK, **RICARDO** IS HERE!!!');
 
-                    for(let i = 0; i < 3; i++) {
+                    for (let i = 0; i < 3; i++) {
                         message.channel.send('<:pinto:795825395563364362>');
                     }
                 }, 10000);
@@ -49,17 +49,19 @@ client.on('message', message => {
 
             message.channel.send(responseMsgs[randomMsg]);
             message.channel.send('<:pinto:795825395563364362>');
-        } else {
-            const lowerCaseMsg = message.content.toLowerCase();
 
-            // Remove repeated consecutive letters (ex.: riiiicardo -> ricardo)
-            const noRepeatConsecMsg = lowerCaseMsg.replace(/(.)\1+/g, '$1');
+            return;
+        }
 
-            if (noRepeatConsecMsg.includes('ricardo')
-                || noRepeatConsecMsg.includes('ricardinho')
-                || noRepeatConsecMsg.includes('ricardao')) {
-                message.channel.send('<:pinto:795825395563364362>');
-            }
+        const lowerCaseMsg = message.content.toLowerCase();
+
+        // Remove repeated consecutive letters (ex.: riiiicardo -> ricardo)
+        const noRepeatConsecMsg = lowerCaseMsg.replace(/(.)\1+/g, '$1');
+
+        if (noRepeatConsecMsg.includes('ricardo')
+            || noRepeatConsecMsg.includes('ricardinho')
+            || noRepeatConsecMsg.includes('ricardao')) {
+            message.channel.send('<:pinto:795825395563364362>');
         }
     }
 });
