@@ -11,15 +11,20 @@ client.on('ready', () => {
 client.on('message', message => {
     // If the message was sent by this bot, ignore
     if (message.author.id !== client.user.id) {
-        const lowerCaseMsg = message.content.toLowerCase();
-
-        // Remove repeated consecutive letters (ex.: riiiicardo -> ricardo)
-        const noRepeatConsecMsg = lowerCaseMsg.replace(/(.)\1+/g, '$1');
-
-        if (noRepeatConsecMsg.includes('ricardo')
-            || noRepeatConsecMsg.includes('ricardinho')
-            || noRepeatConsecMsg.includes('ricardao')) {
+        if (message.isMemberMentioned(client.user)) {
+            message.channel.send('Alguém chamou o **RICARDO**???');
             message.channel.send('<:pinto:795825395563364362>');
+        } else {
+            const lowerCaseMsg = message.content.toLowerCase();
+
+            // Remove repeated consecutive letters (ex.: riiiicardo -> ricardo)
+            const noRepeatConsecMsg = lowerCaseMsg.replace(/(.)\1+/g, '$1');
+
+            if (noRepeatConsecMsg.includes('ricardo')
+                || noRepeatConsecMsg.includes('ricardinho')
+                || noRepeatConsecMsg.includes('ricardao')) {
+                message.channel.send('<:pinto:795825395563364362>');
+            }
         }
     }
 });
