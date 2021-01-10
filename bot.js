@@ -42,6 +42,7 @@ client.on('message', message => {
                 'Alguém chamou o **RICARDO**???',
                 'Sou eu, o **RICARDO**!',
                 'It\'s-a me, **RICARDO**!',
+                '**RICARDO** IS IN THE HOOOOUSE!',
             ]
 
             // Random index to access array of messages
