@@ -9,16 +9,19 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    const lowerCaseMsg = message.content.toLowerCase();
+    // If the message was sent by this bot, ignore
+    if (message.author.id !== client.user.id) {
+        const lowerCaseMsg = message.content.toLowerCase();
 
-    // Remove repeated consecutive letters (ex.: riiiicardo -> ricardo)
-    const noRepeatConsecMsg = lowerCaseMsg.replace(/(.)\1+/g, '$1');
+        // Remove repeated consecutive letters (ex.: riiiicardo -> ricardo)
+        const noRepeatConsecMsg = lowerCaseMsg.replace(/(.)\1+/g, '$1');
 
-    if (noRepeatConsecMsg.includes('ricardo')
+        if (noRepeatConsecMsg.includes('ricardo')
             || noRepeatConsecMsg.includes('ricardinho')
             || noRepeatConsecMsg.includes('ricardao')) {
             message.channel.send('<:pinto:795825395563364362>');
         }
+    }
 });
 
 const scheduledMessage = new cron.CronJob('00 00 22 * * *', () => {
