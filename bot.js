@@ -11,17 +11,22 @@ client.on('ready', () => {
 client.on('message', message => {
     // If the message was sent by this bot, ignore
     if (message.author.id !== client.user.id) {
+        // If bot is mentioned, it will send a message from a set of messages
         if (!message.mentions.everyone && message.isMemberMentioned(client.user)) {
+            // Probability of sending special message
             const specialMsg = Math.random();
 
+            // 15% of probability of being sent
             if (specialMsg >= 0.85) { 
                 message.channel.send('HEEERE\'S **RICARDO**!', {files: ['lib/heres_ricardo.jpg']});
                 return;
             }
             
+            // 30% of probability of being sent
             if (specialMsg >= 0.7) {
                 message.channel.send('I\'m sorry, Ricardo is in another castle...');
 
+                // Messages are delayed
                 setTimeout(function () {
                     message.channel.send('JK, **RICARDO** IS HERE!!!');
 
@@ -39,6 +44,7 @@ client.on('message', message => {
                 'It\'s-a me, **RICARDO**!',
             ]
 
+            // Random index to access array of messages
             const randomMsg = Math.floor(Math.random() * responseMsgs.length);
 
             message.channel.send(responseMsgs[randomMsg]);
