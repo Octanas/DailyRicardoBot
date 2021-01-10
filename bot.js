@@ -12,7 +12,15 @@ client.on('message', message => {
     // If the message was sent by this bot, ignore
     if (message.author.id !== client.user.id) {
         if (message.isMemberMentioned(client.user)) {
-            message.channel.send('Alguém chamou o **RICARDO**???');
+            const responseMsgs = [
+                'Alguém chamou o **RICARDO**???',
+                'Sou eu, o **RICARDO**!',
+                'It\'s-a me, **RICARDO**!',
+            ]
+
+            const randomMsg = Math.floor(Math.random() * responseMsgs.length);
+
+            message.channel.send(responseMsgs[randomMsg]);
             message.channel.send('<:pinto:795825395563364362>');
         } else {
             const lowerCaseMsg = message.content.toLowerCase();
