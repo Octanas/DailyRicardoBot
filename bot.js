@@ -14,7 +14,12 @@ client.on('message', message => {
         if (message.isMemberMentioned(client.user)) {
             const specialMsg = Math.random();
 
-            if (specialMsg >= 0.8) {
+            if (specialMsg >= 0.85) { 
+                message.channel.send('HEEERE\'S **RICARDO**!', {files: ['lib/heres_ricardo.jpg']});
+                return;
+            }
+            
+            if (specialMsg >= 0.7) {
                 message.channel.send('I\'m sorry, Ricardo is in another castle...');
 
                 setTimeout(function () {
