@@ -11,7 +11,7 @@ client.on('ready', () => {
 client.on('message', message => {
     // If the message was sent by this bot, ignore
     if (message.author.id !== client.user.id) {
-        if (message.isMemberMentioned(client.user)) {
+        if (!message.mentions.everyone && message.isMemberMentioned(client.user)) {
             const specialMsg = Math.random();
 
             if (specialMsg >= 0.85) { 
