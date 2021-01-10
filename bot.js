@@ -12,6 +12,22 @@ client.on('message', message => {
     // If the message was sent by this bot, ignore
     if (message.author.id !== client.user.id) {
         if (message.isMemberMentioned(client.user)) {
+            const specialMsg = Math.random();
+
+            if (specialMsg >= 0.8) {
+                message.channel.send('I\'m sorry, Ricardo is in another castle...');
+
+                setTimeout(function () {
+                    message.channel.send('JK, **RICARDO** IS HERE!!!');
+
+                    for(let i = 0; i < 3; i++) {
+                        message.channel.send('<:pinto:795825395563364362>');
+                    }
+                }, 10000);
+
+                return;
+            }
+
             const responseMsgs = [
                 'Alguém chamou o **RICARDO**???',
                 'Sou eu, o **RICARDO**!',
