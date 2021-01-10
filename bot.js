@@ -15,9 +15,10 @@ client.on('message', message => {
     const noRepeatConsecMsg = lowerCaseMsg.replace(/(.)\1+/g, '$1');
 
     if (noRepeatConsecMsg.includes('ricardo')
-        || noRepeatConsecMsg.includes('ricardinho')) {
-        message.channel.send('<:pinto:795825395563364362>');
-    }
+            || noRepeatConsecMsg.includes('ricardinho')
+            || noRepeatConsecMsg.includes('ricardao')) {
+            message.channel.send('<:pinto:795825395563364362>');
+        }
 });
 
 const scheduledMessage = new cron.CronJob('00 00 22 * * *', () => {
