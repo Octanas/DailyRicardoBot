@@ -16,6 +16,12 @@ client.on('message', message => {
             // Probability of sending special message
             const specialMsg = Math.random();
 
+            // 5% of probability of being sent
+            if (specialMsg >= 0.95) {
+                message.channel.send('**RICARDO** POLKA TIME!', { files: ['lib/ricardo_polka.mp4'] });
+                return;
+            }
+
             // 15% of probability of being sent
             if (specialMsg >= 0.85) {
                 message.channel.send('HEEERE\'S **RICARDO**!', { files: ['lib/heres_ricardo.jpg'] });
