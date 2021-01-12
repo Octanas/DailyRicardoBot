@@ -28,6 +28,12 @@ client.on('message', message => {
                 return;
             }
 
+            // 75% of probability of being sent
+            if (specialMsg >= 0.75) {
+                message.channel.send('**RIPCARDO**', { files: ['lib/ripcardo.png'] });
+                return;
+            }
+
             // 30% of probability of being sent
             if (specialMsg >= 0.7) {
                 message.channel.send('I\'m sorry, Ricardo is in another castle...');
