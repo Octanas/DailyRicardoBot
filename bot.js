@@ -12,7 +12,7 @@ client.on('message', message => {
     // If the message was sent by this bot, ignore
     if (message.author.id !== client.user.id) {
         // If bot is mentioned, it will send a message from a set of messages
-        if (!message.mentions.everyone && message.isMemberMentioned(client.user)) {
+        if (message.mentions.has(client.user, {ignoreRoles: true, ignoreEveryone: true})) {
             // Probability of sending special message
             const specialMsg = Math.random();
 
