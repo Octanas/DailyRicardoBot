@@ -28,7 +28,7 @@ client.on('message', message => {
                 return;
             }
 
-            // 75% of probability of being sent
+            // 25% of probability of being sent
             if (specialMsg >= 0.75) {
                 message.channel.send('**RIPCARDO**', { files: ['lib/ripcardo.png'] });
                 return;
