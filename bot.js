@@ -12,7 +12,7 @@ client.on('message', message => {
     // If the message was sent by this bot, ignore
     if (message.author.id !== client.user.id) {
         // If bot is mentioned, it will send a message from a set of messages
-        if (message.mentions.has(client.user, {ignoreRoles: true, ignoreEveryone: true})) {
+        if (message.mentions.has(client.user, { ignoreRoles: true, ignoreEveryone: true })) {
             // Probability of sending special message
             const specialMsg = Math.random();
 
@@ -81,8 +81,11 @@ client.on('message', message => {
 
 const scheduledMessage = new cron.CronJob('00 00 22 * * *', () => {
     // This runs every day at 22:00
-    client.channels.get(process.env.CHANNEL_ID).send('**Hora do Ricardo**');
-    client.channels.get(process.env.CHANNEL_ID).send('<:pinto:795825395563364362>');
+    client.channels.fetch(process.env.CHANNEL_ID)
+        .then(channel => {
+            channel.send('**Hora do Ricardo**');
+            channel.send('<:pinto:795825395563364362>');
+        });
 });
 
 client.login(process.env.BOT_TOKEN);
