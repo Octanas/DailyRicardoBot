@@ -41,10 +41,7 @@ client.on('message', message => {
                 // Messages are delayed
                 setTimeout(function () {
                     message.channel.send('JK, **RICARDO** IS HERE!!!');
-
-                    for (let i = 0; i < 3; i++) {
-                        message.channel.send('<:pinto:795825395563364362>');
-                    }
+                    sendRicardoEmoji(message, 3);
                 }, 10000);
 
                 return;
@@ -61,7 +58,8 @@ client.on('message', message => {
             const randomMsg = Math.floor(Math.random() * responseMsgs.length);
 
             message.channel.send(responseMsgs[randomMsg]);
-            message.channel.send('<:pinto:795825395563364362>');
+
+            sendRicardoEmoji(message, 1);
 
             return;
         }
@@ -74,10 +72,23 @@ client.on('message', message => {
         if (noRepeatConsecMsg.includes('ricardo')
             || noRepeatConsecMsg.includes('ricardinho')
             || noRepeatConsecMsg.includes('ricardao')) {
-            message.channel.send('<:pinto:795825395563364362>');
+            sendRicardoEmoji(message, 1);
         }
     }
 });
+
+function sendRicardoEmoji(message, number) {
+    const ricardoEmoji = client.emojis.cache.find(emoji => emoji.name === "pinto");
+
+    if (ricardoEmoji === undefined) {
+        message.channel.send('You don\'t have the Ricardo emoji. **SHAME**');
+        message.channel.send('Add an emoji with tag \`:pinto:` and you\'ll be good to go.');
+    } else {
+        for (let i = 0; i < number; i++) {
+            message.channel.send(`${ricardoEmoji}`);
+        }
+    }
+}
 
 const scheduledMessage = new cron.CronJob('00 00 22 * * *', () => {
     // This runs every day at 22:00
