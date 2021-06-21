@@ -22,20 +22,26 @@ client.on('message', message => {
                 return;
             }
 
-            // 15% of probability of being sent
-            if (specialMsg >= 0.85) {
+            // 7.5% of probability of being sent
+            if (specialMsg >= 0.875) {
                 message.channel.send('HEEERE\'S **RICARDO**!', { files: ['lib/heres_ricardo.jpg'] });
                 return;
             }
 
-            // 25% of probability of being sent
-            if (specialMsg >= 0.75) {
+            // 7.5% of probability of being sent
+            if (specialMsg >= 0.8) {
                 message.channel.send('**RIPCARDO**', { files: ['lib/ripcardo.png'] });
                 return;
             }
 
-            // 30% of probability of being sent
-            if (specialMsg >= 0.7) {
+            // 7.5% of probability of being sent
+            if (specialMsg >= 0.725) {
+                message.channel.send('**RIPPEDCARDO**', { files: ['lib/rippedcardo.png'] });
+                return;
+            }
+
+            // 10% of probability of being sent
+            if (specialMsg >= 0.625) {
                 message.channel.send('I\'m sorry, Ricardo is in another castle...');
 
                 // Messages are delayed
