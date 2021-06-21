@@ -40,8 +40,15 @@ client.on('message', message => {
                 return;
             }
 
+            // 7.5% of probability of being sent
+            if (specialMsg >= 0.65) {
+                message.channel.send('**I TURNED MYSELF INTO A PICKLE!**');
+                message.channel.send('**I\'M PICKLE RICKAAAAARDO!**', { files: ['lib/pickle_rickardo.png'] });
+                return;
+            }
+
             // 10% of probability of being sent
-            if (specialMsg >= 0.625) {
+            if (specialMsg >= 0.55) {
                 message.channel.send('I\'m sorry, Ricardo is in another castle...');
 
                 // Messages are delayed
